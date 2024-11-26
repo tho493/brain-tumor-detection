@@ -1,0 +1,16 @@
+:root {
+    --white-color: #fff;
+    --black-color: #2f2f2f;
+}
+
+* {
+    box-sizing: border-box;
+    background-color: var(--black-color);
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}

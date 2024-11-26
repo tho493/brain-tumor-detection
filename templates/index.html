@@ -1,0 +1,72 @@
+<!DOCTYPE hml>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát hiện khối u não</title>
+    <link rel="shortcut icon" href="static/assets/img/Remove-bg.ai_1727357219654.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/assets/css/base.css">
+    <link rel="stylesheet" href="static/assets/css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+t
+        <div class="content">
+
+            <div data-aos="flip-left"
+                 data-aos-easing="ease-out-cubic"
+                 data-aos-duration="2000"
+                 class="form">
+                <h1 class="heading">Phát hiện khối u não 🧠</h1>
+
+                <!-- Form Thêm Ảnh -->
+                <div class="form-image">
+                    <i class="icon fa-solid fa-arrow-up-from-bracket"></i>
+                    <span class="text">Chọn file hình ảnh <i class="fa-solid fa-image"></i></span>
+                    <input class="file" id="fileInput" type="file" accept="image/*" multiple>
+                </div>
+
+                <h2 class="title">Hình đã chọn</h2>
+
+                <!-- Form Hiển Thị Ảnh-->
+                <div class="form-select" id="form-selected">
+                    <!-- <div class="form-select__image">
+                        <img id="selectedImage1" src="static/assets/img/meme.jpg" alt="hinh-1">
+                    </div> -->
+                </div>
+
+                <!-- Form Button -->
+                <div class="form-btn">
+                    <button id="show_result">
+                        <span class="button_top"> Bắt Đầu </span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Kết quả -->
+            <div class="result ">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="static/assets/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+</body>
+
+</html>
