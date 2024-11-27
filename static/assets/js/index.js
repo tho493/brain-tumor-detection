@@ -40,7 +40,6 @@ const input = document.querySelector("#fileInput");
                         <div class="result-group__info">
                             <div class="result-group__skeleton"></div>
                             <div class="result-group__skeleton"></div>
-                            <div class="result-group__skeleton"></div>
                         </div>
                     </div>
                 </div>
@@ -59,8 +58,8 @@ const input = document.querySelector("#fileInput");
                     // };
                     imagesData.push(img.src);
                 });
-
                 const fetchData = async () => {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     try {
                         const response = await fetch('/', {
                             method: 'POST',
@@ -70,49 +69,45 @@ const input = document.querySelector("#fileInput");
                             body: JSON.stringify(imagesData),
                         });
                         const data = await response.json();
-                        // console.log(data);
-                        var resultHtml = `<div class="result-form">
-                                    <h1>Kết quả</h1>
-                                    <div class="result-container">`
-                        if(data["error"] == 0){
-                            data["data"].forEach((item) => {
-                                resultHtml += `
-                                            <div class="result-items">
-                                                <div class="result-group__img">
-                                                    <img src="${item.b64_str}" alt="hinh-anh">
-                                                </div>
-                                                <div class="result-group__info">
-                                                    <p>Class: ${item.cls_name}</p>
-                                                    <p>Conf: ${item.conf}</p>
-                                                </div>
-                                            </div>
-                                        `;
-                            });
-                            resultHtml += `</div>
-                                    </div>`
-                        }
-                        else if (data["error"] == 2) {
-                            resultHtml += `
-                                <div class="result-items">
-                                    <div class="result-group__info">
-                                        <p>Error: ${data["error"]}</p>
-                                        <p>Message: ${data["message"]}</p>
-                                    </div>
-                                </div>
-                            `;
-                        }
-                        else {
-                            resultHtml += `
-                            <div class="result-items">
-                                    <div class="result-group__info">
-                                        <p>Không tìm thấy ảnh nào</p>
-                                    </div>
-                                </div>`
-                        }
+
                         result.classList.remove('active');
-                        result.innerHTML = resultHtml;
+                        await new Promise(resolve => setTimeout(resolve, 300));
                         result.classList.add('active');
-                        // Handle the response data as needed
+                        const resultHtml = `<div class="result-form">
+                                            <h1>Kết quả</h1>
+                                            <div class="result-container" id="result-container"></div>
+                                            </div>
+                                            `;
+                        result.innerHTML = resultHtml;
+
+                        if(data["error"] === 0){
+                            data["data"].forEach((item) => {
+                                const resultHtmlItem = `
+                                                    <div class="result-items">
+                                                        <div class="result-group__img">
+                                                            <img src="${item.b64_str}" alt="hinh-anh">
+                                                        </div>
+                                                        <div class="result-group__info">
+                                                            <p>Class: ${item.cls_name}</p>
+                                                            <p>Conf: ${item.conf}</p>
+                                                        </div>
+                                                    </div>
+                                                `;
+                                document.getElementById("result-container").insertAdjacentHTML("beforeend", resultHtmlItem);
+                            });
+                        } else {
+                            const resultHtmlItem = `
+                                                <div class="result-items">
+                                                    <div class="result-group__info">
+                                                        <p>Error: ${data["error"]}</p>
+                                                        <p>Message: ${data["message"] == "" ? data["message"] : "Không tìm thấy ảnh nào"}</p>
+                                                    </div>
+                                                </div>
+                                            `;
+                            document.getElementById("result-container").insertAdjacentHTML("beforeend", resultHtmlItem);
+                        }
+                        // result.classList.remove('active');
+                        // result.classList.add('active');
                     } catch (error) {
                         console.error('Error:', error);
                     }

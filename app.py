@@ -7,15 +7,15 @@ import cv2
 import base64
 import os
 
-model = YOLO('best.pt')
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Config
+model = YOLO(os.path.join(dir_path,'best.pt'))
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['DEBUG'] = True
 app.config['PORT'] = 5000
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def get_cv2_image_from_base64_string(b64str):
     encoded_data = b64str.split(',')[1]
