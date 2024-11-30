@@ -30,19 +30,23 @@ def get_base64_string_from_cv2_image(img):
 
 
 def detection_image(image):
-    results = model.track(image, persist=True)
+    results = model.track(image, persist=False)
+    length_detections = len(results[0].boxes)  
+    if(length_detections > 0):
+        # Gắn nhãn và lấy các tham số
+        annotator = Annotator(image)
+        conf = results[0].boxes.conf.cpu().tolist()
+        boxes = results[0].boxes.xyxy.cpu()
+        clss = results[0].boxes.cls.cpu().tolist()
+        for box, cls in zip(boxes, clss):
+            annotator.box_label(box, color=colors(int(cls), True))
 
-    # Gắn nhãn và lấy các tham số
-    annotator = Annotator(image)
-    conf = results[0].boxes.conf.cpu().tolist()
-    boxes = results[0].boxes.xyxy.cpu()
-    clss = results[0].boxes.cls.cpu().tolist()
-    for box, cls in zip(boxes, clss):
-        annotator.box_label(box, color=colors(int(cls), True))
-
-    b64_str = get_base64_string_from_cv2_image(image)
-    cls_name = results[0].names[cls]
-    return [b64_str, conf, cls_name]
+        b64_str = get_base64_string_from_cv2_image(image)
+        cls_name = results[0].names[cls]
+        return [length_detections, b64_str, conf, cls_name]
+    else: 
+        b64_str = get_base64_string_from_cv2_image(image)
+        return [length_detections, b64_str, [1], "Không phát hiện"]
 
 @app.route('/',methods=['GET'])
 def home():
@@ -51,19 +55,20 @@ def home():
 @app.route("/", methods=['POST'])
 def read_root():
     decoded_data = request.data
-    if not decoded_data or decoded_data == []:
+    data = json.loads(decoded_data)
+    if not data or data == []:
         return {"error": 1, "message": "No image detected"}
     try:
-        data = json.loads(decoded_data)
         response_data = {"error": 0, "message": "", "data": []}
         for i, item in enumerate(data):
             # Decode the base64-encoded image
-            image = get_cv2_image_from_base64_string(item)
+            image = get_cv2_image_from_base64_string(item["src"])
+            fileName = item["fileName"]
             # image = cv2.resize(image, (224, 224))
-            b64_str, conf, cls_name = detection_image(image)
-            response_data["data"].append({"b64_str": b64_str, "conf": conf[0], "cls_name": cls_name})
+            length_detections, b64_str, conf, cls_name = detection_image(image)
+            response_data["data"].append({"is_detected": length_detections, "fileName": fileName, "b64_str": b64_str, "conf": conf[0], "cls_name": cls_name})
     except Exception as e:
-        return {"error": 2, "message": f"An error occurred: {str(e)}"}
+        return {"error": 2, "message": f"{str(e)}"}
     
     return response_data
 

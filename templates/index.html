@@ -15,17 +15,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/assets/css/base.css">
     <link rel="stylesheet" href="static/assets/css/style.css">
+    <link rel="stylesheet" href="static/assets/css/view-image.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <span class="close" id="close_modal" onclick="closeModal(event)">&times;</span>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-content" id="modal-content">
+            <img id="modal-image" src="" alt="Large Image">
+        </div>
+        <div class="zoom-buttons">
+            <button onclick="zoomIn()">Zoom In</button>
+            <button onclick="zoomOut()">Zoom Out</button>
+        </div>
+    </div>
     <div class="wrapper">
-t
         <div class="content">
-
             <div data-aos="flip-left"
                  data-aos-easing="ease-out-cubic"
-                 data-aos-duration="2000"
+                 data-aos-duration="1000"
                  class="form">
                 <h1 class="heading">Phát hiện khối u não 🧠</h1>
 
@@ -60,6 +70,7 @@ t
         </div>
     </div>
 
+    <script src="static/assets/js/view-image.js"></script>
     <script src="static/assets/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
