@@ -72,6 +72,10 @@ def read_root():
     
     return response_data
 
+@app.errorhandler(404) 
+def not_found(e): 
+  return render_template("404.html") 
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, use_reloader=False)
