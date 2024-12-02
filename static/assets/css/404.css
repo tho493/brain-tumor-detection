@@ -1,0 +1,49 @@
+:root {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Prompt:wght@400;700&display=swap');
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    color: #acbac3;
+    font-family: "Prompt", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    text-align: center;
+}
+
+#warning-icon {
+    font-size: 80px;
+    /* color: #fb0000; */
+}
+
+#warning-number {
+    font-size: 55px;
+    color: #e99415
+}
+
+#countdown{
+    font-size: 30px;
+    font-weight: bold;
+    color: #e99415;
+}
+/* 
+.warning-message {
+    
+} */
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 18px;
+}

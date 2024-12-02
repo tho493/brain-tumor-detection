@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="stylesheet" href="static/assets/css/404.css">
+    
+<body>
+    <div class="container">
+        <h1 class="warning-title">
+            <span id="warning-icon">⚠️</span><span id="warning-number">404</span> Page not found</h1>
+        <p class="warning-message">Redirecting to main page in <span id="countdown">5</span> seconds...</p>
+    </div>
+    <script>
+        // Countdown timer
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        const interval = setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = '/';
+            }
+            countdownElement.textContent = countdown;
+        }, 1000);
+    </script>
+</body>
+</html>
