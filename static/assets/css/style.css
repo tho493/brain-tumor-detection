@@ -208,7 +208,7 @@ button:active .button_top {
     flex-direction: column;
     height: 220px;
     position: relative;
-    /* width: 210px; */
+    width: 210px;
     border-radius: 10px;
     overflow: hidden;
     border: 2px dashed #ccc;

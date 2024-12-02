@@ -15,6 +15,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['DEBUG'] = True
+app.config['TESTING'] = True
 app.config['PORT'] = 5000
 
 def get_cv2_image_from_base64_string(b64str):
@@ -73,4 +74,4 @@ def read_root():
     return response_data
 
 if __name__ == '__main__':
-    app.run(port=app.config['PORT'])
+    app.run(port=app.config['PORT'], use_reloader=False)
