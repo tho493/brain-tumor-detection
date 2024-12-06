@@ -38,8 +38,9 @@
     margin: 40px auto;
 }
 
-.form-image:hover {
-    color: orange;
+.form-image:hover, .form-image:hover i, .form-image:hover span {
+    color-scheme: bisque;
+    color: bisque;
     border-color: orange;
 }
 
@@ -249,7 +250,11 @@ button:active .button_top {
     font-size: 14px;
 }
 
-
+.ready, .ready i, .ready span{
+    color-scheme: bisque;
+    color: bisque;
+    border-color: orange;
+}
 
 /* Skeleton */
 

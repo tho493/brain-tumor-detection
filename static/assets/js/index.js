@@ -1,6 +1,44 @@
 const input = document.querySelector("#fileInput");
+const formImage = document.getElementById("formImage");
 
-function add_image(src_image, file_name, count) {
+// Xử lý sự kiện kéo thả file
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+function toggleHighlight(e) {
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+        formImage.classList.add('ready');
+    } else {
+        formImage.classList.remove('ready');
+    }
+}
+
+// Thêm hoặc bỏ class highlight
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    document.getElementById("formImage").addEventListener(eventName, toggleHighlight, false);
+});
+
+// // Ngăn chặn hành vi mặc định
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    document.getElementById("formImage").addEventListener(eventName, preventDefaults, false);
+    document.body.addEventListener(eventName, preventDefaults, false);
+});
+
+// Xử lý sự kiện drop
+document.getElementById("formImage").addEventListener('drop', handleDrop, false);
+
+function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    handleFiles(files);
+}
+
+/// 
+
+function add_image(src_image, file_name, count=0) {
     const variableHtml = `<div class="form-select__image">
         <img class="selectedImage" id="selectedImage-${count}" src="${src_image}" alt="${file_name}" onclick="openModal(this.src, '${file_name}')">
         <span class="file-name">${file_name}</span>
@@ -11,21 +49,24 @@ function add_image(src_image, file_name, count) {
 
 input.addEventListener('change', (e) => {
     const files = e.target.files;
+    
+    handleFiles(files);
+});
+
+function handleFiles(files) {
     document.getElementById("form-selected").innerHTML = "";
 
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+    [...files].forEach(file, index => {
         const reader = new FileReader();
 
         reader.onload = (event) => {
             const src = event.target.result;
-            add_image(src, file.name, i);
+            add_image(src, file.name, index);
         };
         reader.readAsDataURL(file);
-    }
-});
-
-// Show result
+    });
+}
+// Show result //
 
 const btnShow = document.querySelector("#show_result");
 const result = document.querySelector(".result");
