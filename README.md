@@ -53,7 +53,7 @@ YOUR_PROJECT_DIR
             |   ├── base.css
             |   ├── grid.css
             |   ├── style.css
-            |   └── style.css
+            |   └── view-image.css
             ├── img                // Folder image template
             └── js
                 ├── index.js       // App functions

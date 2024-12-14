@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phát hiện khối u não</title>
+    <meta name="description" content="Phát hiện khối u não bằng trí tuệ nhân tạo - Công cụ hỗ trợ chẩn đoán">
+    <meta name="keywords" content="phát hiện u não, AI chẩn đoán u não, khối u não">
+    <title>Phát hiện khối u não | AI Diagnosis Tool</title>
     <link rel="shortcut icon" href="static/assets/img/Remove-bg.ai_1727357219654.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -31,13 +33,39 @@
             <button onclick="zoomOut()">Zoom Out</button>
         </div>
     </div>
+        
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-brain nav-logo__icon"></i>
+                <span class="nav-logo__text">Phát hiện khối u não</span>
+            </a>
+
+            <button class="nav-mobile-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu">
+                <li class="nav-menu__item">
+                    <a href="#" class="nav-menu__link">Giới thiệu</a>
+                </li>
+                <li class="nav-menu__item">
+                    <a href="#" class="nav-menu__link">Hướng dẫn</a>
+                </li>
+                <li class="nav-menu__item">
+                    <a href="#" class="nav-menu__link">Liên hệ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="wrapper">
         <div class="content">
             <div data-aos="flip-left"
                  data-aos-easing="ease-out-cubic"
                  data-aos-duration="1000"
                  class="form">
-                <h1 class="heading">Phát hiện khối u não 🧠</h1>
+                <!-- <h1 class="heading">Phát hiện khối u não 🧠</h1> -->
 
                 <!-- Form Thêm Ảnh -->
                 <div class="form-image" id="formImage">
@@ -57,7 +85,7 @@
 
                 <!-- Form Button -->
                 <div class="form-btn">
-                    <button id="show_result">
+                    <button id="show_result" aria-label="Upload Image">
                         <span class="button_top"> Bắt Đầu </span>
                     </button>
                 </div>
@@ -69,6 +97,16 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Phát hiện khối u não. Tất cả các quyền được bảo lưu.</p>
+            <ul class="footer-links">
+                <li>Email: <a href="mailto:chitho040903@gmail.com">chitho040903@gmail.com</a></li>
+                <li>Điện thoại: <a href="tel:+84896505169">0896505169</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="static/assets/js/view-image.js"></script>
     <script src="static/assets/js/index.js"></script>

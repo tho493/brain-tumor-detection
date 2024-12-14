@@ -1,3 +1,8 @@
+// Mobile button
+document.querySelector('.nav-mobile-btn').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('active');
+});
+
 const input = document.querySelector("#fileInput");
 const formImage = document.getElementById("formImage");
 
@@ -54,14 +59,14 @@ input.addEventListener('change', (e) => {
 });
 
 function handleFiles(files) {
-    document.getElementById("form-selected").innerHTML = "";
-
-    [...files].forEach(file, index => {
+    
+    [...files].forEach(file => {
+        document.getElementById("form-selected").innerHTML = "";
         const reader = new FileReader();
 
         reader.onload = (event) => {
             const src = event.target.result;
-            add_image(src, file.name, index);
+            add_image(src, file.name);
         };
         reader.readAsDataURL(file);
     });
