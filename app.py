@@ -48,7 +48,7 @@ def detection_image(image):
         b64_str = get_base64_string_from_cv2_image(image)
         return [length_detections, b64_str, [1], "Không phát hiện"]
 
-@app.route('/',methods=['GET'])
+@app.route("/",methods=['GET'])
 def home():
     return render_template('index.html')
 
@@ -72,10 +72,22 @@ def read_root():
     
     return response_data
 
+@app.route("/about", methods=['GET'])
+def about():
+    return render_template('mics/about.html')
+
+@app.route("/contact", methods=['GET'])
+def contact():
+    return render_template('mics/contact.html')
+
+@app.route("/instruct", methods=['GET'])
+def instruct():
+    return render_template('mics/instruct.html')
+
 @app.errorhandler(404) 
 def not_found(e): 
   return render_template("404.html") 
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, use_reloader=False)
+    app.run(host='0.0.0.0', port=port) # use_reloader=False

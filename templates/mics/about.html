@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-header h1 {
+    font-size: 2.5em;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.about-header p {
+    font-size: 1.1em;
+    color: #ffd588;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.member {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+}
+
+.member-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.member-info h3 {
+    font-size: 1.5em;
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.member-info .role {
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.member-info .description {
+    color: #777;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .member {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <div class="content">
+        <div class="about-container">
+            <div class="about-header">
+                <h1>Giới thiệu về nhóm</h1>
+                <p>Chúng tôi là nhóm sinh viên đến từ trường Đại học Sao Đỏ, chuyên ngành Công nghệ thông tin</p>
+            </div>
+
+            <div class="team-members">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-img">
+                        <img src="static/assets/img/tho493.jpg" alt="Thành viên 1">
+                    </div>
+                    <div class="member-info">
+                        <h3>Nguyễn Chí Thọ</h3>
+                        <p class="role">Trưởng nhóm</p>
+                        <p class="description">Phụ trách phát triển mô hình AI và Backend</p>
+                    </div>
+                </div>
+
+                <div class="member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-img">
+                        <img src="static/assets/img/nghia.jpg" alt="Thành viên 2">
+                    </div>
+                    <div class="member-info">
+                        <h3>Tăng Quang Nghĩa</h3>
+                        <p class="role">Thành viên</p>
+                        <p class="description">Phụ trách thiết kế giao diện và Frontend</p>
+                    </div>
+                </div>
+
+                <div class="member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-img">
+                        <img src="static/assets/img/jin-young.jpg" alt="Thành viên 3">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vũ Thị Bắc</h3>
+                        <p class="role">Thành viên</p>
+                        <p class="description">Phụ trách thu thập và xử lý dữ liệu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -81,6 +81,10 @@ body {
     margin-left: 3rem;
 }
 
+.nav-menu__item .active {
+    color: orange;
+}
+
 .nav-menu__link {
     color: var(--white-color);
     text-decoration: none;

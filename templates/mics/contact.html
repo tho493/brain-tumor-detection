@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .contact-header h1 {
+        font-size: 2.5em;
+        color: orange;
+        margin-bottom: 20px;
+    }
+
+    .contact-header p {
+        font-size: 1.1em;
+        color: #ffd588;
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .info-item {
+        background: var(--black-color);
+        padding: 30px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-item i {
+        font-size: 2.5em;
+        color: orange;
+        margin-bottom: 20px;
+    }
+
+    .info-item h3 {
+        color: orange;
+        margin-bottom: 15px;
+    }
+
+    .info-item p {
+        color: #ffd588;
+    }
+
+    .contact-form {
+        background: var(--black-color);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #3f3f3f;
+        border-radius: 5px;
+        background: #2f2f2f;
+        color: white;
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        background: orange;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #ff8c00;
+    }
+
+    @media (max-width: 768px) {
+        .contact-info {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+    <div class="content">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Liên hệ với chúng tôi</h1>
+                <p>Hãy liên hệ nếu bạn có bất kỳ câu hỏi nào</p>
+            </div>
+            <div class="contact-info">
+                <div class="info-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Địa chỉ</h3>
+                    <p>Số 17 Kim Đồng, Phường Sao Đỏ, Thành phố Chí Linh, Tỉnh Hải Dương</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-phone"></i>
+                    <h3>Điện thoại</h3>
+                    <p>(+84) 0896 505 169</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>chitho040903@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="400">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Nội dung tin nhắn" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

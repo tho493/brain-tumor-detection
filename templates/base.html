@@ -1,0 +1,85 @@
+<!DOCTYPE hml>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phát hiện khối u não bằng trí tuệ nhân tạo - Công cụ hỗ trợ chẩn đoán">
+    <meta name="keywords" content="phát hiện u não, AI chẩn đoán u não, khối u não">
+    <title>Phát hiện khối u não | AI Diagnosis Tool</title>
+    <!-- <link rel="shortcut icon" href="static/assets/img/Remove-bg.ai_1727357219654.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/assets/css/base.css">
+    <link rel="stylesheet" href="static/assets/css/style.css">
+    <link rel="stylesheet" href="static/assets/css/view-image.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    {% block css %} {% endblock %}
+</head>
+
+<body>
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <span class="close" id="close_modal" onclick="closeModal(event)">&times;</span>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-content" id="modal-content">
+            <img id="modal-image" src="" alt="Large Image">
+        </div>
+        <div class="zoom-buttons">
+            <button onclick="zoomIn()">Zoom In</button>
+            <button onclick="zoomOut()">Zoom Out</button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-brain nav-logo__icon"></i>
+                <span class="nav-logo__text">Phát hiện khối u não</span>
+            </a>
+
+            <button class="nav-mobile-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu">
+                <li class="nav-menu__item">
+                    <a href="/about" class="nav-menu__link {{ 'active' if request.path == '/about' }}">Giới thiệu</a>
+                </li>
+                <li class="nav-menu__item">
+                    <a href="/instruct" class="nav-menu__link {{ 'active' if request.path == '/instruct' }}">Hướng dẫn</a>
+                </li>
+                <li class="nav-menu__item">
+                    <a href="/contact" class="nav-menu__link {{ 'active' if request.path == '/contact' }}" >Liên hệ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Phát hiện khối u não. Tất cả các quyền được bảo lưu.</p>
+            <!-- <ul class="footer-links">
+                <li>Email: <a href="mailto:chitho040903@gmail.com">chitho040903@gmail.com</a></li>
+                <li>Điện thoại: <a href="tel:+84896505169">0896505169</a></li>
+            </ul> -->
+        </div>
+    </footer>
+
+    <script src="static/assets/js/view-image.js"></script>
+    <script src="static/assets/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>

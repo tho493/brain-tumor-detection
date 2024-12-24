@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    .instruct-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .instruct-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .instruct-header h1 {
+        font-size: 2.5em;
+        color: orange;
+        margin-bottom: 20px;
+    }
+
+    .instruct-header p {
+        font-size: 1.1em;
+        color: #ffd588;
+    }
+
+    .instruct-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .step {
+        display: flex;
+        align-items: flex-start;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-number {
+        background: orange;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+    
+
+    .step, .step-number, .step-content {
+        background: var(--black-color);
+    }
+
+    .step-content h3 {
+        color: orange;
+        margin-bottom: 10px;
+    }
+
+    .step-content p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .instruct-container {
+            padding: 20px 10px;
+        }
+
+        .step {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-number {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+    }
+</style>
+{% endblock%}
+
+{% block body %}
+<div class="wrapper">
+    <div class="content">
+        <div class="instruct-container">
+            <div class="instruct-header">
+                <h1>Hướng dẫn sử dụng</h1>
+                <p>Các bước thực hiện phát hiện khối u não bằng AI</p>
+            </div>
+
+            <div class="instruct-steps">
+                <div class="step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Chuẩn bị ảnh</h3>
+                        <p>Chuẩn bị ảnh chụp MRI não của bạn. Ảnh cần rõ nét và đúng định dạng (JPG, PNG).</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Tải ảnh lên</h3>
+                        <p>Nhấp vào khu vực tải ảnh hoặc kéo thả ảnh vào khu vực được chỉ định trên trang chủ.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Xem kết quả</h3>
+                        <p>Hệ thống AI sẽ phân tích và hiển thị kết quả phát hiện khối u não (nếu có) trên ảnh của bạn.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Tham khảo ý kiến bác sĩ</h3>
+                        <p>Kết quả từ hệ thống chỉ mang tính chất tham khảo. Vui lòng tham khảo ý kiến bác sĩ chuyên khoa để có chẩn đoán chính xác.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
