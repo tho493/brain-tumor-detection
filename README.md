@@ -94,3 +94,7 @@ Nhóm tác giả bao gồm:
 
 - Bộ data ở [kaggle](https://www.kaggle.com/datasets/ammarahmed310/labeled-mri-brain-tumor-dataset?resource=download)
 - [Yoboflow](https://app.roboflow.com/yolo-yvyq9/brain-tumor-detection-dataset-tkxin/deploy)
+
+---
+
+Feel free to contribute to this project by opening issues or submitting pull requests!
