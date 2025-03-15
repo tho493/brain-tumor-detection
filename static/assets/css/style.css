@@ -371,11 +371,11 @@ button:active .button_top {
     align-items: center;
     flex-direction: column;
     height: 220px;
-    position: relative;
-    width: 210px;
+    width: 200px;
     border-radius: 10px;
     overflow: hidden;
     border: 2px dashed #ccc;
+    position: relative;
 }
 
 .result-group__img img{
@@ -383,6 +383,9 @@ button:active .button_top {
     height: 100%;
     cursor: pointer;
     transition: transform 0.3s ease;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 .result-group__img img:hover{
@@ -398,6 +401,10 @@ button:active .button_top {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 5px 10px;
     border-radius: 10px;
+}
+
+.result-group__info {
+    width: 80%;
 }
 
 .result-group__info p:first-child{

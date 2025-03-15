@@ -3,92 +3,139 @@
 {% block css %}
 <style>
     .about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
 
-.about-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
+    .about-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
-.about-header h1 {
-    font-size: 2.5em;
-    color: orange;
-    margin-bottom: 20px;
-}
+    .about-header h1 {
+        font-size: 2.8em;
+        color: orange;
+        margin-bottom: 20px;
+    }
 
-.about-header p {
-    font-size: 1.1em;
-    color: #ffd588;
-}
+    .about-header p {
+        font-size: 1.1em;
+        color: #ffd588;
+    }
 
-.team-members {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-}
+    .project-info {
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 50px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-.member {
-    width: 300px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
+    .project-info h2 {
+        color: orange;
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.0;
+    }
 
-.member:hover {
-    transform: translateY(-5px);
-}
+    .project-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+    }
 
-.member-img {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
+    .detail-card {
+        font-size: 1.5em;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
 
-.member-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .detail-card h3 {
+        color: orange;
+        margin-bottom: 15px;
+    }
 
-.member-info {
-    padding: 20px;
-    text-align: center;
-}
+    .detail-card p {
+        color: #666;
+        line-height: 1.6;
+    }
 
-.member-info h3 {
-    font-size: 1.5em;
-    color: orange;
-    margin-bottom: 10px;
-}
+    .project-description {
+        font-size: 1.2em;
+        color: #666;
+        line-height: 1.6;
+        text-align: justify;
+    }
 
-.member-info .role {
-    color: #666;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.member-info .description {
-    color: #777;
-    font-size: 0.9em;
-}
-
-@media (max-width: 768px) {
+    /* Style cũ giữ nguyên */
     .team-members {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
     }
 
     .member {
-        width: 100%;
-        max-width: 350px;
+        width: 300px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
     }
-}
+
+    .member:hover {
+        transform: translateY(-5px);
+    }
+
+    .member-img {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .member-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .member-info {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .member-info h3 {
+        font-size: 1.5em;
+        color: orange;
+        margin-bottom: 10px;
+    }
+
+    .member-info .role {
+        color: #666;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .member-info .description {
+        color: #777;
+        font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+        .team-members {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .member {
+            width: 100%;
+            max-width: 350px;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -96,6 +143,34 @@
 <div class="wrapper">
     <div class="content">
         <div class="about-container">
+            <!-- Thêm phần thông tin dự án -->
+            <div class="project-info" data-aos="fade-up">
+                <h2>Dự án phát hiện khối u não</h2>
+                <div class="project-details">
+                    <div class="detail-card">
+                        <h3>Mục tiêu</h3>
+                        <p>Phát triển hệ thống AI hỗ trợ phát hiện và phân loại khối u não từ ảnh MRI, giúp bác sĩ chẩn
+                            đoán nhanh chóng và chính xác hơn.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Công nghệ sử dụng</h3>
+                        <p>Deep Learning, Computer Vision, Python, Yolo, OpenCV, Flask</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Độ chính xác</h3>
+                        <p>Mô hình đạt độ chính xác 95% trong việc phát hiện và phân loại khối u não từ ảnh MRI.</p>
+                    </div>
+                </div>
+                <div class="project-description">
+                    <p>Dự án sử dụng mô hình Deep Learning tiên tiến để phân tích ảnh MRI não, giúp phát hiện sớm các
+                        khối u não.
+                        Hệ thống có khả năng phân loại các loại u não khác nhau, đồng thời xác định vị trí và kích thước
+                        của khối u.
+                        Kết quả được hiển thị trực quan, giúp các bác sĩ có thêm công cụ hỗ trợ trong quá trình chẩn
+                        đoán và điều trị.</p>
+                </div>
+            </div>
+
             <div class="about-header">
                 <h1>Giới thiệu về nhóm</h1>
                 <p>Chúng tôi là nhóm sinh viên đến từ trường Đại học Sao Đỏ, chuyên ngành Công nghệ thông tin</p>
@@ -138,6 +213,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

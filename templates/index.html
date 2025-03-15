@@ -9,12 +9,11 @@
             <!-- Form Thêm Ảnh -->
             <div class="form-image" id="formImage">
                 <i class="icon fa-solid fa-arrow-up-from-bracket"></i>
-                <span class="text">Kéo và thả file để tải lên, hoặc chọn file hình ảnh <i
-                        class="fa-solid fa-image"></i></span>
+                <span class="text">Kéo và thả file để tải lên, hoặc chọn file hình ảnh <i class="fa-solid fa-image"></i></span>
                 <input class="file" id="fileInput" type="file" accept="image/*" multiple>
             </div>
 
-            <h2 class="title">Hình đã chọn</h2>
+            <h2 class="title" style="display: none;">Hình đã chọn</h2>
 
             <!-- Form Hiển Thị Ảnh-->
             <div class="form-select" id="form-selected">
@@ -29,11 +28,53 @@
                     <span class="button_top"> Bắt Đầu </span>
                 </button>
             </div>
-
         </div>
 
         <!-- Kết quả -->
-        <div class="result ">
+
+        <div class="result active">
+            <div class="result-form">
+                <h1>Các loại bệnh mô hình có thể phát hiện</h1>
+                <div class="result-container" id="result-container">
+                    <div class="result-items">
+                        <div class="result-group__img">
+                            <img src="static/assets/img/notumor.jpg"
+                            alt="Image 1" onclick="openModal(this.src,'No Tumor')">
+                        </div>
+                        <div class="result-group__info">
+                            <p>Không phát hiện</p>
+                            <p>Thể hiện trạng não đang không mắc bệnh.</p>
+                        </div>
+                    </div>
+                    <div class="result-items">
+                        <div class="result-group__img">
+                            <img src="static/assets/img/glioma.jpg" alt="Image 2" onclick="openModal(this.src,'Glioma')">
+                        </div>
+                        <div class="result-group__info">
+                            <p>Glioma</p>
+                            <p>U não khiến bệnh nhân bị các triệu chứng như đau đầu, co giật, mất trí nhớ, rối loạn thị giác và khó khăn trong việc nói hoặc di chuyển.</p>
+                        </div>
+                    </div>
+                    <div class="result-items">
+                        <div class="result-group__img">
+                            <img src="static/assets/img/meningioma.jpg" alt="Image 3" onclick="openModal(this.src,'Meningioma')">
+                        </div>
+                        <div class="result-group__info">
+                            <p>Meningioma</p>
+                            <p>Meningioma thường là u lành tính, nhưng một số có thể ác tính. Gây ra đau đầu, rối loạn thị giác tùy vào vị trí của nó.</p>
+                        </div>
+                    </div>
+                    <div class="result-items">
+                        <div class="result-group__img">
+                            <img src="static/assets/img/pituitary.jpg" alt="Image 4" onclick="openModal(this.src,'Pituitary')">
+                        </div>
+                        <div class="result-group__info">
+                            <p>Pituitary</p>
+                            <p>Là một loại khối u lành tính, nhưng gây ra nhiều vấn đề sức khỏe tới bệnh nhân do ảnh hưởng tới hormone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

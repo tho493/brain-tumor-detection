@@ -15,8 +15,10 @@ function preventDefaults(e) {
 function toggleHighlight(e) {
     if (e.type === 'dragenter' || e.type === 'dragover') {
         formImage.classList.add('ready');
+        document.body.style.cursor = 'not-allowed';
     } else {
         formImage.classList.remove('ready');
+        document.body.style.cursor = 'allowed';
     }
 }
 
@@ -33,10 +35,13 @@ function toggleHighlight(e) {
 
 // Xử lý sự kiện drop
 document.getElementById("formImage").addEventListener('drop', handleDrop, false);
+const title = document.querySelector(".title")
 
 function handleDrop(e) {
     const dt = e.dataTransfer;
     const files = dt.files;
+
+    title?.classList.remove('hidden')
 
     handleFiles(files);
 }
@@ -54,12 +59,11 @@ function add_image(src_image, file_name, count=0) {
 
 input.addEventListener('change', (e) => {
     const files = e.target.files;
-    
     handleFiles(files);
 });
 
 function handleFiles(files) {
-    
+    document.querySelector(".title").style.display = "block";
     [...files].forEach(file => {
         document.getElementById("form-selected").innerHTML = "";
         const reader = new FileReader();
@@ -95,7 +99,8 @@ btnShow.onclick = () => {
 
     if(skeletonHtml) {
         result.innerHTML = skeletonHtml;
-        result.classList.add('active');
+        result?.classList.add('active');
+
         const selectedImages = document.querySelectorAll('.selectedImage');
         const imagesData = [];
 
