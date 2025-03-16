@@ -14,8 +14,8 @@ model = YOLO(os.path.join(dir_path,'best.pt'))
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-# app.config['DEBUG'] = True
-# app.config['TESTING'] = True
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
 
 def get_cv2_image_from_base64_string(b64str):
     encoded_data = b64str.split(',')[1]

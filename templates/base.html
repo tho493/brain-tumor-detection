@@ -56,6 +56,9 @@
                 <li class="nav-menu__item">
                     <a href="/contact" class="nav-menu__link {{ 'active' if request.path == '/contact' }}" >Liên hệ</a>
                 </li>
+                <button class="theme-switch" aria-label="Switch theme" style="padding-left: 50px;">
+                    <i class="fas fa-moon"></i>
+                </button>
             </ul>
         </div>
     </nav>
@@ -78,6 +81,26 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+    <script>
+        const themeSwitch = document.querySelector('.theme-switch');
+
+        themeSwitch.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                document.documentElement.style.setProperty('--black-color', '#bfab91');
+                document.documentElement.style.setProperty('--white-color', '#2f2f2f');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                document.documentElement.style.setProperty('--black-color', '#121212');
+                document.documentElement.style.setProperty('--white-color', '#e0e0e0');
+            }
+        });
     </script>
 
 </body>

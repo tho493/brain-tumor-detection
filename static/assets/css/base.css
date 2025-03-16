@@ -15,6 +15,34 @@ html {
     margin: 0 auto;
 }
 
+body {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .hidden {
     display: None;
+}
+
+body.light-mode {
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
+
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+}
+
+.nav-menu__link.active {
+    font-weight: bold;
+}
+
+.theme-switch {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
