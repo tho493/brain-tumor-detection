@@ -1,5 +1,5 @@
 from flask_cors import CORS, cross_origin
-from flask import Flask, json, request, render_template
+from flask import Flask, json, request, render_template, jsonify
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 import numpy as np
@@ -14,11 +14,15 @@ model = YOLO(os.path.join(dir_path,'best.pt'))
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
+# app.config['DEBUG'] = True
+# app.config['TESTING'] = True
 
-def get_cv2_image_from_base64_string(b64str):
-    encoded_data = b64str.split(',')[1]
+def split_b64str(b64str, android = False):
+    if(android == False): return b64str.split(',')[1]
+    else: return b64str
+
+def get_cv2_image_from_base64_string(b64str, android= False):
+    encoded_data = split_b64str(b64str, android)
     nparr = np.frombuffer(base64.b64decode(encoded_data), np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     return img
@@ -46,7 +50,7 @@ def detection_image(image):
         return [length_detections, b64_str, conf, cls_name]
     else: 
         b64_str = get_base64_string_from_cv2_image(image)
-        return [length_detections, b64_str, [1], "Không phát hiện"]
+        return [length_detections, b64_str, [1], "No-Tumor"]
 
 @app.route("/",methods=['GET'])
 def home():
@@ -61,6 +65,7 @@ def read_root():
     try:
         response_data = {"error": 0, "message": "", "data": []}
         for i, item in enumerate(data):
+            # print(data)
             # Decode the base64-encoded image
             image = get_cv2_image_from_base64_string(item["src"])
             fileName = item["fileName"]
@@ -69,8 +74,20 @@ def read_root():
             response_data["data"].append({"is_detected": length_detections, "fileName": fileName, "b64_str": b64_str, "conf": conf[0], "cls_name": cls_name})
     except Exception as e:
         return {"error": 2, "message": f"{str(e)}"}
-    
     return response_data
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    decoded_data = request.data
+    data = json.loads(decoded_data)
+    response_data = {"error": 0, "message": "", "data": []}
+    # try:
+    image = get_cv2_image_from_base64_string(data['src'], True)
+    length_detections, b64_str, conf, cls_name = detection_image(image)
+    response_data["data"].append({"is_detected": length_detections, "b64_str": b64_str, "conf": conf[0], "cls_name": cls_name})
+    # except Exception as e:
+    #     return jsonify({"error": 2, "message": f"{str(e)}"})
+    return jsonify(response_data) 
 
 @app.route("/about", methods=['GET'])
 def about():
